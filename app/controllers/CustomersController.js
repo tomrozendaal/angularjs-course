@@ -1,13 +1,19 @@
 (function() {
 
-    var CustomersController = function ($scope, customersFactory, appSettings) {
+    var CustomersController = function ($scope, $log, customersFactory, appSettings) {
         $scope.sortBy = 'name';
         $scope.reverse = 'false';
         $scope.customers = [];
         $scope.appSettings = appSettings;
 
         function init() {
-            $scope.customers = customersFactory.getCustomers();
+            customersFactory.getCustomers()
+                .success(function(customers) {
+                    $scope.customers = customers;
+                })
+                .error(function(data, status, headers, config){
+                    $log.log(data.error + " " + status);
+                });
         }
 
         init();
