@@ -5,7 +5,7 @@
     <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body ng-controller="CustomersController">
     <h2>Customers</h2>
     Filter: <input type="text" ng-model="customerFilter.name" />
     <br/><br/>
@@ -24,27 +24,10 @@
             <td>{{ cust.joined | date:'dd-MM-yyyy' }}</td>
         </tr>
     </table>
-
+    <br/>
     <span>Total customers: {{ customers.length }}</span>
 
     <script src="angular.js"></script>
-    <script>
-        function CustomersController($scope) {
-            $scope.sortBy = 'name';
-            $scope.reverse = 'false';
-
-            $scope.customers= [
-                {joined: '2000-12-02', name: 'John', city: 'New York', orderTotal: 9.9956},
-                {joined: '2004-08-02', name: 'Tom', city: 'Rotterdam', orderTotal: 5.356},
-                {joined: '2014-11-05', name: 'Piet', city: 'Amsterdam', orderTotal: 44.9123},
-                {joined: '2014-10-11', name: 'Kees', city: 'Papendrecht', orderTotal: 12.9123}
-            ];
-
-            $scope.doSort = function(propName) {
-                $scope.sortBy=propName;
-                $scope.reverse=!$scope.reverse;
-            };
-        }
-    </script>
+    <script src="app/controllers/CustomersController.js"></script>
 </body>
 </html>
