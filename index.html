@@ -1,26 +1,28 @@
 <!doctype html>
 <html ng-app>
 <head>
-    <title>Iterating Over Data</title>
+    <title>Using Filters</title>
     <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
-<body ng-init="people=[{name: 'John', city: 'Chandler'}, {name: 'Tina', city: 'New York'}, {name: 'Tom', city: 'Rotterdam'}]">
+<body ng-init="customers=[ {joined: '2000-12-02', name: 'John', city: 'New York', orderTotal: 9.9956}, {joined: '2004-08-02', name: 'Tom', city: 'Rotterdam', orderTotal: 5.356}, {joined: '2014-11-05', name: 'Piet', city: 'Amsterdam', orderTotal: 44.9123} ]">
 
-    <ul>
-        <li ng-repeat="person in people">{{ person.name }} - {{ person.city }}</li>
-    </ul>
-
-    <hr/>
+    <h2>Customers</h2>
+    Filter: <input type="text" />
+    <br/><br/>
 
     <table>
         <tr>
-            <td>Name</td>
-            <td>City</td>
+            <th>Name</th>
+            <th>City</th>
+            <th>Order Total</th>
+            <th>Joined</th>
         </tr>
-        <tr ng-repeat="person in people">
-            <td>{{ person.name }}</td>
-            <td>{{ person.city }}</td>
+        <tr ng-repeat="cust in customers">
+            <td>{{ cust.name | uppercase }}</td>
+            <td>{{ cust.city | lowercase }}</td>
+            <td>{{ cust.orderTotal | currency }}</td>
+            <td>{{ cust.joined | date:'dd-MM-yyyy' }}</td>
         </tr>
     </table>
 
