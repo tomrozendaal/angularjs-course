@@ -2,10 +2,19 @@
 <html ng-app="customersApp">
 <head>
     <title>Modules</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="#/customers">Customers</a></li>
+                <li><a href="#/orders">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div ng-view></div>
 
@@ -14,6 +23,7 @@
     <script src="app/app.js"></script>
     <script src="app/controllers/CustomersController.js"></script>
     <script src="app/controllers/OrdersController.js"></script>
+    <script src="app/controllers/AllOrdersController.js"></script>
     <script src="app/services/customersFactory.js"></script>
     <script src="app/services/customersService.js"></script>
     <script src="app/services/values.js"></script>
