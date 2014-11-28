@@ -8,7 +8,7 @@
 <body ng-init="customers=[ {joined: '2000-12-02', name: 'John', city: 'New York', orderTotal: 9.9956}, {joined: '2004-08-02', name: 'Tom', city: 'Rotterdam', orderTotal: 5.356}, {joined: '2014-11-05', name: 'Piet', city: 'Amsterdam', orderTotal: 44.9123} ]">
 
     <h2>Customers</h2>
-    Filter: <input type="text" />
+    Filter: <input type="text" ng-model="customerFilter.name" />
     <br/><br/>
 
     <table>
@@ -18,7 +18,7 @@
             <th>Order Total</th>
             <th>Joined</th>
         </tr>
-        <tr ng-repeat="cust in customers">
+        <tr ng-repeat="cust in customers | filter:customerFilter | orderBy:'name'">
             <td>{{ cust.name | uppercase }}</td>
             <td>{{ cust.city | lowercase }}</td>
             <td>{{ cust.orderTotal | currency }}</td>
